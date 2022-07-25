@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans>
+    <!--可以只有component-scans标签,指定包名,也可以有component-scan标签，这里包名类名都支持-->
+    <component-scans base-package="">
+        <component-scan package="com.lulu.webDemo.controller"></component-scan>
+        <component-scan package="com.lulu.webDemo.service"></component-scan>
+        <component-scan package="com.lulu.webDemo.config"></component-scan>
+    </component-scans>
+</beans>

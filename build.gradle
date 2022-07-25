@@ -1,0 +1,51 @@
+plugins {
+    id 'war'
+    id 'java'
+    id 'com.bmuschko.tomcat' version "2.7.0"
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    maven {
+        url 'http://maven.aliyun.com/nexus/content/groups/public/'
+        //接受不安全仓库
+        allowInsecureProtocol = true
+    }
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.11'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    dependencies {
+        implementation(
+         'org.apache.commons:commons-lang3:3.5',
+                'dom4j:dom4j:1.6.1',
+                'com.fasterxml.jackson.core:jackson-databind:2.9.1'
+        )
+        compileOnly('javax.servlet:javax.servlet-api:3.1.0')
+        def tomcatVersion = '7.0.76'
+        tomcat 'org.apache.tomcat.embed:tomcat-embed-core:7.0.76',
+                'org.apache.tomcat.embed:tomcat-embed-logging-juli:7.0.76',
+                'org.apache.tomcat.embed:tomcat-embed-jasper:7.0.76'
+    }
+}
+
+compileJava {
+    //这样反射时才能获取真实参数名
+    options.compilerArgs << "-parameters"
+}
+
+tomcat {
+    httpPort = 8080
+    httpsPort = 8091
+    enableSSL = true
+    contextPath = 'mvcdemo'
+}
+
+test {
+    useJUnitPlatform()
+}

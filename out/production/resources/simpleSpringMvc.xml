@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans>
+    <component-scans base-package="">
+        <component-scan package="com.lulu.webDemo.controller"></component-scan>
+        <component-scan package="com.lulu.webDemo.service"></component-scan>
+        <component-scan package="com.lulu.webDemo.config"></component-scan>
+    </component-scans>
+</beans>
